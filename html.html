@@ -1,0 +1,51 @@
+<!--
+     FreeCodeCamp Wikipedia Viewer
+     Boris Wong 2017-06-06
+
+     Javascript Requirements:
+     jQuery
+     AngularJS
+     Bootstrap 4
+
+     CSS Requirements:
+     Bootstrap 4
+
+   -->
+
+<div class="container" ng-app="wikiViewer">
+  <div class="jumbotron">
+    <h1>Wikipedia Viewer</h1>
+    <p>Written by Boris Wong 2017-06-07</p>
+    <p>Project based off of FreeCodeCamp challenge.</p>
+  </div>
+
+
+  <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" >Random Article</a>
+
+  <h2>Search</h2>
+  <div ng-controller="searchCtrl">
+    <div class="input-group">
+      <input type="text" id="search-input" class="form-control" ng-keyup="$event.keyCode == 13 ? searchClick() : null" ng-model="wikiSearchValue">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ng-click="searchClick()">Search</button>
+      </span>
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ng-click="closeSearchClick();" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </span>
+    </div>
+  </div>
+  <div ng-controller="searchList">
+    <div class="card search-card" ng-repeat="wikiItem in r.r[1]">
+      <div class="card-header">
+        {{r.r[1][$index]}}
+      </div>
+      <div class="card-block">
+        <p class="card-text">{{r.r[2][$index]}}</p>
+      </div>
+      <div class="card-footer">
+        <p><a href="{{r.r[3][$index]}}" target="_blank">{{r.r[3][$index]}}</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
